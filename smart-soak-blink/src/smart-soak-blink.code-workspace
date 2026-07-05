@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../../../wokwisimulation/smart-soak-blink"
+		},
+		{
+			"name": "smart-soak-blink",
+			"path": ".."
+		}
+	],
+	"settings": {}
+}
