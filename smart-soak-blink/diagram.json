@@ -4,23 +4,67 @@
   "editor": "wokwi",
   "parts": [
     { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
-    { "type": "wokwi-servo", "id": "servo1", "top": -100, "left": 200, "attrs": {} },
     { "type": "board-ssd1306", "id": "oled1", "top": -120, "left": -180, "attrs": {} },
-    { "type": "wokwi-hx711", "id": "scale1", "top": 100, "left": -180, "attrs": {} }
+    { "type": "wokwi-buzzer", "id": "buz1", "top": 120, "left": 200, "attrs": { "volume": "0.3" } },
+    
+    { "type": "wokwi-servo", "id": "servo1", "top": -100, "left": 150, "attrs": { "label": "Almonds" } },
+    { "type": "wokwi-servo", "id": "servo2", "top": -100, "left": 270, "attrs": { "label": "Walnuts" } },
+    { "type": "wokwi-servo", "id": "servo3", "top": -100, "left": 390, "attrs": { "label": "Cashews" } },
+    
+    { "type": "wokwi-hx711", "id": "hx1", "top": 200, "left": 50, "attrs": {} },
+    { "type": "wokwi-load-cell-5kg", "id": "lc1", "top": 280, "left": 50, "attrs": {} },
+    
+    { "type": "wokwi-pushbutton", "id": "btn_up", "top": 80, "left": -180, "attrs": { "color": "green", "label": "UP" } },
+    { "type": "wokwi-pushbutton", "id": "btn_down", "top": 140, "left": -180, "attrs": { "color": "red", "label": "DOWN" } },
+    { "type": "wokwi-pushbutton", "id": "btn_enter", "top": 200, "left": -180, "attrs": { "color": "blue", "label": "ENTER" } },
+    
+    { "type": "wokwi-led", "id": "led_inlet", "top": 10, "left": -320, "attrs": { "color": "blue", "label": "Inlet Valve" } },
+    { "type": "wokwi-led", "id": "led_drain", "top": 70, "left": -320, "attrs": { "color": "orange", "label": "Drain Valve" } },
+    { "type": "wokwi-led", "id": "led_uvc", "top": 130, "left": -320, "attrs": { "color": "purple", "label": "UV-C LED" } }
   ],
   "connections": [
-    [ "servo1:PWM", "esp:13", "green", [] ],
-    [ "servo1:V+",  "esp:5V",  "red",   [] ],
-    [ "servo1:GND", "esp:GND", "black", [] ],
-
     [ "oled1:VCC", "esp:3V3", "red",    [] ],
     [ "oled1:GND", "esp:GND", "black",  [] ],
     [ "oled1:SDA", "esp:21",  "blue",   [] ],
     [ "oled1:SCL", "esp:22",  "yellow", [] ],
 
-    [ "scale1:VCC", "esp:3V3", "red",     [] ],
-    [ "scale1:GND", "esp:GND", "black",   [] ],
-    [ "scale1:DT",  "esp:16",  "magenta", [] ],
-    [ "scale1:SCK", "esp:4",   "cyan",    [] ]
+    [ "buz1:1", "esp:17",  "purple", [] ],
+    [ "buz1:2", "esp:GND", "black",  [] ],
+
+    [ "servo1:PWM", "esp:13", "green", [] ],
+    [ "servo1:V+",  "esp:5V",  "red",   [] ],
+    [ "servo1:GND", "esp:GND", "black", [] ],
+
+    [ "servo2:PWM", "esp:14", "green", [] ],
+    [ "servo2:V+",  "esp:5V",  "red",   [] ],
+    [ "servo2:GND", "esp:GND", "black", [] ],
+
+    [ "servo3:PWM", "esp:4",  "green", [] ],
+    [ "servo3:V+",  "esp:5V",  "red",   [] ],
+    [ "servo3:GND", "esp:GND", "black", [] ],
+
+    [ "lc1:A+", "hx1:A+", "blue", [] ],
+    [ "lc1:A-", "hx1:A-", "blue", [] ],
+    [ "lc1:E+", "hx1:E+", "red",  [] ],
+    [ "lc1:E-", "hx1:E-", "black",[] ],
+
+    [ "hx1:VCC", "esp:3V3", "red",   [] ],
+    [ "hx1:GND", "esp:GND", "black", [] ],
+    [ "hx1:DT",  "esp:19",  "green", [] ],
+    [ "hx1:SCK", "esp:18",  "yellow",[] ],
+
+    [ "btn_up:1.l",    "esp:32",  "green", [] ],
+    [ "btn_up:2.l",    "esp:GND", "black", [] ],
+    [ "btn_down:1.l",  "esp:33",  "red",   [] ],
+    [ "btn_down:2.l",  "esp:GND", "black", [] ],
+    [ "btn_enter:1.l", "esp:27",  "blue",  [] ],
+    [ "btn_enter:2.l", "esp:GND", "black", [] ],
+
+    [ "led_inlet:A", "esp:25",  "blue",  [] ],
+    [ "led_inlet:K", "esp:GND", "black", [] ],
+    [ "led_drain:A", "esp:26",  "orange",[] ],
+    [ "led_drain:K", "esp:GND", "black", [] ],
+    [ "led_uvc:A",   "esp:15",  "purple",[] ],
+    [ "led_uvc:K",   "esp:GND", "black", [] ]
   ]
 }

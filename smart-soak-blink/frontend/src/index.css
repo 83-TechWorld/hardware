@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@utility glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@utility glow-purple {
+  box-shadow: 0 0 40px -10px rgba(139, 92, 246, 0.3);
+}
+
+@utility progress-ring-gradient {
+  background: conic-gradient(from 0deg, #8B5CF6, #7C3AED, transparent 60%);
+}
+
+body {
+  margin: 0;
+  background-color: #0b1326;
+  color: #dae2fd;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
